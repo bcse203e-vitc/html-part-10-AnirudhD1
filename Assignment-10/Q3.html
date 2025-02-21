@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pizza Order</title>
+    </head>
+    <body>
+        <h1>Pizza Order Form</h1>
+        
+        <form id="pizza-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="size">Size:</label><br><br>
+            
+            <input type="radio" id="size-s" name="size" value="small" required>
+            <label for="size-s">Small</label><br><br>
+            
+            <input type="radio" id="size-m" name="size" value="medium">
+            <label for="size-m">Medium</label><br><br>
+            
+            <input type="radio" id="size-l" name="size" value="large">
+            <label for="size-l">Large</label><br><br>
+            
+            <label for="crust">Crust:</label><br><br>
+            <input type="radio" id="crust-thin" name="crust" value="Thin" required>
+            <label for="crust-thin">Thin</label><br><br>
+            
+            <input type="radio" id="crust-thick" name="crust" value="Thick">
+            <label for="crust-thick">Thick</label><br><br>
+
+            <label for="toppings">Toppings:</label><br><br>
+            <input type="checkbox" id="pepperoni" name="toppings" value="Pepperoni">
+            <label for="pepperoni">Pepperoni</label><br>
+            <input type="checkbox" id="mushrooms" name="toppings" value="Mushrooms">
+            <label for="mushrooms">Mushrooms</label><br>
+            <input type="checkbox" id="onions" name="toppings" value="Onions">
+            <label for="onions">Onions</label><br>
+            <input type="checkbox" id="olives" name="toppings" value="Olives">
+            <label for="olives">Olives</label><br>
+            <input type="checkbox" id="tomatoes" name="toppings" value="Tomatoes">
+            <label for="tomatoes">Tomatoes</label><br>
+            <input type="checkbox" id="extra-cheese" name="toppings" value="Extra Cheese">
+            <label for="extra-cheese">Extra Cheese</label><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <script>
+            // Summarise order on submit
+            document.querySelector('#pizza-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Collect form data
+                var name = document.getElementById('name').value;
+                var size = document.querySelector('input[name="size"]:checked') ? document.querySelector('input[name="size"]:checked').value : 'Not selected';
+                var crust = document.querySelector('input[name="crust"]:checked') ? document.querySelector('input[name="crust"]:checked').value : 'Not selected';
+                var toppings = document.querySelectorAll('input[name="toppings"]:checked');
+                var selectedToppings = [];
+                toppings.forEach(function(topping) {
+                    selectedToppings.push(topping.value);
+                });
+
+                // Show the order summary
+                alert(`Order Summary:\nName: ${name}\nSize: ${size}\nCrust: ${crust}\nToppings: ${selectedToppings.length ? selectedToppings.join(', ') : 'None'}`);
+
+                // Reset the form after submission
+                this.reset();
+            });
+        </script>
+    </body>
+</html>

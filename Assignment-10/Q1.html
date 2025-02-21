@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Number Guessing Game</title>
+    </head>
+    <body>
+        <label  for="no">Guess a number!!</label>
+        <input type="number" id="no" name="no">
+        <button onclick="guessNumber()">Guess</button>
+        <p id="result"></p>
+    </body>
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        
+        function guessNumber() {
+            let userGuess = document.getElementById("no").value;
+            let resultElement = document.getElementById("result");
+            
+            while (userGuess !== undefined) {
+                userGuess = parseInt(userGuess);
+                break;
+            }
+            do {
+                userGuess = prompt("Invalid input! Please enter a number between 1 and 100.");
+            } while (isNaN(userGuess) || userGuess < 1 || userGuess > 100);
 
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                resultElement.textContent = "Invalid input! Please enter a number between 1 and 100.";
+                return;
+                
+            } else if (userGuess < randomNumber) {
+             resultElement.textContent = "Too low! Try again.";
+             
+            } else if (userGuess > randomNumber) {
+             resultElement.textContent = "Too high! Try again.";
+             
+            } else {
+             resultElement.textContent = "Congratulations! You guessed the correct number.";
+
+             // Reset the game
+             randomNumber = Math.floor(Math.random() * 100) + 1;
+             document.getElementById("no").value = "";
+            }
+        }
+    </script>
+</html>

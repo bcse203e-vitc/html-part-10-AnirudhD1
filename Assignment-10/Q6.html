@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layered Image Gallery</title>
+    <style>
+        .image {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transition: z-index 0.3s;
+        }
+
+        #image1 {
+            z-index: 1;
+        }
+
+        #image2 {
+            z-index: 2;
+            left: 30px;
+            top: 30px;
+        }
+
+        #image3 {
+            z-index: 3;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+    <script>
+        function bringToFront(imageId) {
+            const images = document.querySelectorAll('.image');
+            images.forEach(img => img.style.zIndex = 1);
+            document.getElementById(imageId).style.zIndex = 4;
+        }
+    </script>
+</head>
+
+<body>
+    <img id="image1"
+        src="https://media.istockphoto.com/id/1211952929/photo/marina-beach-chennai-city-tamil-nadu-india-bay-of-bengal-chennai-tourism-east-coast-road.jpg?s=612x612&w=0&k=20&c=kpAeGGwy3TyyD97PJYULLBhxZV9bM_zVP0CU7f1HIZc="
+        class="image" onclick="bringToFront('image1')" />
+    <img id="image2"
+        src="https://media.istockphoto.com/id/931587220/photo/high-court-in-chennai-india.jpg?s=612x612&w=0&k=20&c=J3TvXZRRVhlKsqea9z9cplmUmlWJ-2BwWarxWyMvyo8="
+        class="image" onclick="bringToFront('image2')" />
+    <img id="image3" src="https://upload.wikimedia.org/wikipedia/commons/3/32/Chennai_Central.jpg" class="image"
+        onclick="bringToFront('image3')" />
+</body>
+
+</html>

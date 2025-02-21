@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script>
+        function addItem() {
+            const input = document.getElementById("todoInput");
+            const list = document.getElementById("todoList");
+            const listItem = document.createElement("li");
+            listItem.innerHTML = input.value + ' <button class="remove">Remove</button>';
+            
+            listItem.querySelector("button").addEventListener("click", () => {
+                list.removeChild(listItem);
+            });
+            
+            list.appendChild(listItem);
+            input.value = "";
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="todoInput" placeholder="Enter task" />
+    <button onclick="addItem()">Add</button>
+    <ul id="todoList"></ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Counter</title>
+    <script>
+        function updateCounter() {
+            let text = document.getElementById("textArea").value;
+            let wordCount = text.split(/\s+/).filter(Boolean).length;
+            let charCount = text.length;
+            document.getElementById("wordCount").innerText = "Words: " + wordCount;
+            document.getElementById("charCount").innerText = "Characters: " + charCount;
+
+            if (charCount > 200) {
+                alert("You have exceeded 200 characters!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <textarea id="textArea" oninput="updateCounter()"></textarea>
+    <div id="wordCount">Words: 0</div>
+    <div id="charCount">Characters: 0</div>
+</body>
+</html>
